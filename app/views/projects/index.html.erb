@@ -1,1 +1,15 @@
-<h1> HI! </h1>
+<h1> Heirlooms </h1>
+
+<div>
+  <%= current_user.email %>
+  <%= link_to "logout", destroy_user_session_path, method: :delete  %>
+</div>
+<% if @projects.length > 0 %>
+  <h2> Your Current Projects </h1>
+<% else %>
+  <h2> Start your first project! </h1>
+<% end %>
+<% @projects.each do |project| %>
+<p><%= link_to project.title, project_path(project) %></p>
+<% end %>
+<%= link_to "Create New Project", new_project_path %>
